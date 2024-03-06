@@ -5,8 +5,8 @@ body {
     margin: 0px;
 }
 main {
-    background-color: lightcoral;
-    color: darkblue;
+    background-color: rgb(205, 255, 242);
+    color: rgb(8, 64, 23);
     font-family: Arial;
 }
 footer {
