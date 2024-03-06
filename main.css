@@ -1,0 +1,17 @@
+body {
+    background-color: lightblue;
+    color: red;
+    font-family: Arial;
+    margin: 0px;
+}
+main {
+    background-color: lightcoral;
+    color: darkblue;
+    font-family: Arial;
+}
+footer {
+    background-color: lightgoldenrodyellow;
+    color: darkgreen;
+    font-family: impact;
+    
+}
