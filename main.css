@@ -19,3 +19,24 @@ header {
     font-size: 18px;
     padding: 3px;
 }
+a {
+    color: green;
+    text-decoration: none;
+}
+
+a:link {
+    text-shadow: 1px 2px 10px;
+}
+a:visited {
+    color: chocolate;
+}
+a:hover {
+    color: rgb(88, 42, 42);
+    background-color: azure;
+    text-decoration: underline;
+}
+
+a:active{
+    color: black;
+    opacity: 0.3;
+}
