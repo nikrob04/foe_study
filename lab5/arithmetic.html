@@ -10,8 +10,10 @@
     <link rel="icon" href="../favicon-32x32.png">
     <script>
         function showSum(){
-            let a = 5154;
-            let b = 7891;
+            let inputA = document.getElementById('numA');
+            let inputb = document.getElementById('numA');
+            let a = parseInt(inputA.value);
+            let b = parseInt(inputb.value);
             let result = a + b;
             alert(a+'+'+b+'='+ result);
         }
@@ -43,7 +45,9 @@
         НГТУ ФБ Лабараторная работа 5
     </header>
     <main>
-        <div class="massage" onclick="showSum()">Сколько будет 5154+7891?</div>
+        <label>Первое число: <input type="number" value="5154" id="numA"></label><br>
+        <label>Второе число: <input type="number" value="7891" id="numB"></label><br>
+        <div class="massage" onclick="showSum()">Найти сумму</div>
         <div class="massage" onclick="showAuthor()">Узнать, кто автор страницы</div>
     </main>
     <footer style="cursor: pointer; " onclick="showF()">
