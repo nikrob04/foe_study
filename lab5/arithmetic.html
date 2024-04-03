@@ -15,6 +15,14 @@
             let result = a + b;
             alert(a+'+'+b+'='+ result);
         }
+        function showAuthor(){
+            let author = 'Автор страницы: \nНикитенко Илья Романович'
+            alert(author)
+        }
+        function showF(){
+            let F = 'Привет, это я !'
+            alert(F)
+        }
     </script>
     <style>
         .massage {
@@ -31,14 +39,14 @@
     </style>
 </head>
 <body>
-    <header>
+    <header onclick="showAuthor()" style="cursor: pointer;">
         НГТУ ФБ Лабараторная работа 5
     </header>
     <main>
         <div class="massage" onclick="showSum()">Сколько будет 5154+7891?</div>
-        <div class="massage">Узнать, кто автор страницы</div>
+        <div class="massage" onclick="showAuthor()">Узнать, кто автор страницы</div>
     </main>
-    <footer>
+    <footer style="cursor: pointer; " onclick="showF()">
         &copy; Никитенко Илья Романович
     </footer>
 </body>
