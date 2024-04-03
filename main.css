@@ -12,7 +12,7 @@ main {
     border-radius: 8px; 
     box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
     padding: 20px; 
-    margin: 20px; 
+    margin: 20px 10px 50px; 
 }
 
 footer {
@@ -22,6 +22,10 @@ footer {
     text-shadow: 0.5px 0.5px 1px #AAA; 
     padding: 10px;
     margin-top: 20px; 
+    position: fixed;
+    bottom: 0;
+    right: 0;
+
 }
 
 header {
