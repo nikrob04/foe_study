@@ -56,6 +56,7 @@
             output.style.color = textColor;
             output.style.borderRadius = borRad
         }
+        
     </script>
     <style>
         .massage {
@@ -83,6 +84,14 @@
     <main>
         <label>Первое число: <input type="number" value="5154" id="numA"></label><br>
         <label>Второе число: <input type="number" value="7891" id="numB"></label><br>
+        
+        <div class="massage" onclick="showSum()">Найти сумму</div>
+        <div class="massage" onclick="showSub()">Найти разность</div>
+        <div class="massage" onclick="showMul()">Найти проиведение</div>
+        <div class="massage" onclick="showDel()">Найти деление</div>
+        <div class="massage" onclick="showAuthor()">Узнать, кто автор страницы</div>
+    
+        
         <div>
             <input type="button" value="Кнопка 1" onclick="changeOutput(1, 'red', 'yellow', '1px')">
             <input type="button" value="Кнопка 2" onclick="changeOutput(2, 'yellow', 'red', '5px')">
@@ -90,7 +99,8 @@
             <input type="button" value="Кнопка 4" onclick="changeOutput(2, 'green', 'red', '15px')">
         </div>
         <div id="output"></div>
-        
+    
+    
     </main>
     <footer style="cursor: pointer; " onclick="showF()">
         &copy; Никитенко Илья Романович
