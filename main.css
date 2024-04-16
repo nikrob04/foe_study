@@ -25,7 +25,7 @@ footer {
     position: fixed;
     bottom: 0;
     right: 0;
-
+    width: 400px    ;
 }
 
 header {
@@ -51,7 +51,7 @@ a:hover {
     color: rgb(88, 42, 42);
     background-color: azure;
     text-decoration: underline;
-    transition: 0.3;
+    transition: 0.3s;
 }
 
 a:active{
