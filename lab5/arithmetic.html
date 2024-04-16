@@ -11,11 +11,35 @@
     <script>
         function showSum(){
             let inputA = document.getElementById('numA');
-            let inputb = document.getElementById('numA');
+            let inputb = document.getElementById('numB');
             let a = parseInt(inputA.value);
             let b = parseInt(inputb.value);
             let result = a + b;
             alert(a+'+'+b+'='+ result);
+        }
+        function showSub(){
+            let inputA = document.getElementById('numA');
+            let inputb = document.getElementById('numB');
+            let a = parseInt(inputA.value);
+            let b = parseInt(inputb.value);
+            let result = a - b;
+            alert(a+'-'+b+'='+ result);
+        }
+        function showMul(){
+            let inputA = document.getElementById('numA');
+            let inputb = document.getElementById('numB');
+            let a = parseInt(inputA.value);
+            let b = parseInt(inputb.value);
+            let result = a * b;
+            alert(a+'*'+b+'='+ result);
+        }
+        function showDel(){
+            let inputA = document.getElementById('numA');
+            let inputb = document.getElementById('numB');
+            let a = parseInt(inputA.value);
+            let b = parseInt(inputb.value);
+            let result = a / b;
+            alert(a+'/'+b+'='+ result);
         }
         function showAuthor(){
             let author = 'Автор страницы: \nНикитенко Илья Романович'
@@ -48,6 +72,9 @@
         <label>Первое число: <input type="number" value="5154" id="numA"></label><br>
         <label>Второе число: <input type="number" value="7891" id="numB"></label><br>
         <div class="massage" onclick="showSum()">Найти сумму</div>
+        <div class="massage" onclick="showSub()">Найти разность</div>
+        <div class="massage" onclick="showMul()">Найти проиведение</div>
+        <div class="massage" onclick="showDel()">Найти деление</div>
         <div class="massage" onclick="showAuthor()">Узнать, кто автор страницы</div>
     </main>
     <footer style="cursor: pointer; " onclick="showF()">
