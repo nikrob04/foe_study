@@ -9,10 +9,27 @@
     <link rel="icon" href="../favicon-16x16.png">
     <link rel="icon" href="../favicon-32x32.png">
     <script>
-        function blurChenge(){
-            let value = document.getElementById('blurValue').value + 'px';
-            document.getElementById('blurOutput').innerText = value
-            document.getElementById('blurImage').style.filter = 'blur(' + value + ')';
+        function updateFilters() {
+            let blurValue = document.getElementById('blurValue').value + 'px';
+            let brValue = document.getElementById('brValue').value + '%';
+            let conValue = document.getElementById('conValue').value + '%';
+            let grayValue = document.getElementById('grayValue').value + '%';
+            let hueValue = document.getElementById('hueValue').value + 'deg';
+            let invertValue = document.getElementById('invertValue').value + '%';
+            let saturateValue = document.getElementById('saturateValue').value + '%';
+            let sepiaValue = document.getElementById('sepiaValue').value + '%';
+    
+            document.getElementById('blurOutput').innerText = blurValue;
+            document.getElementById('brOutput').innerText = brValue;
+            document.getElementById('conOutput').innerText = conValue;
+            document.getElementById('grayOutput').innerText = grayValue;
+            document.getElementById('hueOutput').innerText = hueValue;
+            document.getElementById('invertOutput').innerText = invertValue;
+            document.getElementById('saturateOutput').innerText = saturateValue;
+            document.getElementById('sepiaOutput').innerText = sepiaValue;
+    
+            let combinedFilters = `blur(${blurValue}) brightness(${brValue}) contrast(${conValue}) grayscale(${grayValue}) hue-rotate(${hueValue}) invert(${invertValue}) saturate(${saturateValue}) sepia(${sepiaValue})`;
+            document.getElementById('image').style.filter = combinedFilters;
         }
     </script>
 </head>
@@ -24,13 +41,47 @@
     <main>
         <div>
             Фильтр blur
-            <input type="range" min="0" max="50" value="0" onchange="blurChenge()" id='blurValue'>
-            <span id="blurOutput"></span>
+            <input type="range" min="0" max="50" value="0" onchange="updateFilters()" id='blurValue'>
+            <span id="blurOutput">0px</span>
+                
+            Фильтр brightness
+            <input type="range" min="0" max="500" value="100" onchange="updateFilters()" id='brValue'>
+            <span id="brOutput">100%</span>
+            
+        
+            Фильтр contrast
+            <input type="range" min="0" max="500" value="100" onchange="updateFilters()" id='conValue'>
+            <span id="conOutput">100%</span>
+            
+        
+            Фильтр grayscale
+            <input type="range" min="0" max="100" value="0" onchange="updateFilters()" id='grayValue'>
+            <span id="grayOutput">0%</span>
+            
+        
+            Фильтр hue-rotate
+            <input type="range" min="0" max="360" value="0" onchange="updateFilters()" id='hueValue'>
+            <span id="hueOutput">0deg</span>
+            
+        
+            Фильтр invert
+            <input type="range" min="0" max="100" value="0" onchange="updateFilters()" id='invertValue'>
+            <span id="invertOutput">0%</span>
+            
+        
+            Фильтр saturate
+            <input type="range" min="0" max="500" value="100" onchange="updateFilters()" id='saturateValue'>
+            <span id="saturateOutput">100%</span>
+            
+        
+            Фильтр sepia
+            <input type="range" min="0" max="100" value="0" onchange="updateFilters()" id='sepiaValue'>
+            <span id="sepiaOutput">0%</span>
+            
         </div>
         <div>
-            <img src="novosibir-vid-na-pamyatnik-2600.jpg" id="blurImage">
+            <img src="novosibir-vid-na-pamyatnik-2600.jpg" id="image" style="max-width: 100%; height: auto;">
         </div>
-        
     </main>
 
     <footer>
