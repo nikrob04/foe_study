@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Никитенко Илья Романович. Лабараторная 5</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon-16x16.png">
+    <link rel="icon" href="../favicon-32x32.png">
+    <style>
+        #circlesСon {
+            position: relative;
+            width: 100%;
+            height: 500px; 
+        }
+
+        .circle {
+        position: absolute;
+        border-radius: 50%; 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-weight: bold;
+        text-align: center;
+        transition: opacity 0.5s, transform 0.5s;
+        cursor: pointer;
+        }
+        .circle.hide {
+            opacity: 0;
+            transform: scale(0);
+            }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('circlesСon');
+            const sizes = [50, 70, 25, 60, 40, 45, 30, 65, 55, 35]; // Размеры кругов
+
+        for (let i = 1; i <= 10; i++) {
+            const circle = document.createElement('div');
+            circle.className = 'circle';
+            circle.textContent = i; // Номер блока
+            const size = sizes[i - 1];
+
+            // Случайные координаты внутри контейнера
+            const x = Math.random() * (container.offsetWidth - size);
+            const y = Math.random() * (container.offsetHeight - size);
+
+            // Применяем стили и размеры круга
+            circle.style.width = `${size}px`;
+            circle.style.height = `${size}px`;
+            circle.style.left = `${x}px`;
+            circle.style.top = `${y}px`;
+            circle.style.backgroundColor = getRandomColor();
+
+            // Добавляем обработчик события 'click' к каждому кругу
+            circle.addEventListener('click', function() {
+                this.classList.add('hide'); // Добавляем класс 'hide', который запускает анимацию
+            });
+
+            container.appendChild(circle);
+        }
+  
+
+        // Функция для генерации случайного цвета
+        function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+        const restoreButton = document.getElementById('restore');
+        restoreButton.addEventListener('click', function() {
+            const circles = document.querySelectorAll('.circle');
+            circles.forEach(circle => {
+                circle.classList.remove('hide');
+            });
+        });
+    });
+
+    </script>
+</head>
+<body>
+    <header>
+        НГТУ ФБ Лабараторная работа 5
+    </header>
+
+    <main>
+        <div id="circlesСon">
+            <button type="button" id="restore">Восстановить круги</button>
+        </div>
+    </main>
+
+    <footer>
+        &copy; Никитенко Илья Романович
+    </footer>
+</body>
+</html>
