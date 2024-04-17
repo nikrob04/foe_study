@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Никитенко Илья Романович. Лабараторная 5</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon-16x16.png">
+    <link rel="icon" href="../favicon-32x32.png">
+    <script>
+        function calculateTotal() {
+            
+            const PRICES = {
+                apples: 100,
+                pears: 80,
+                oranges: 150,
+                bananas: 50,
+                peaches: 200
+            };
+            
+            
+            const apples = document.getElementById('apples').value;
+            const pears = document.getElementById('pears').value;
+            const oranges = document.getElementById('oranges').value;
+            const bananas = document.getElementById('bananas').value;
+            const peaches = document.getElementById('peaches').value;
+            
+            
+            let total = (apples * PRICES.apples) +
+                        (pears * PRICES.pears) +
+                        (oranges * PRICES.oranges) +
+                        (bananas * PRICES.bananas) +
+                        (peaches * PRICES.peaches);
+  
+  
+            document.getElementById('total').textContent = total;
+        }
+        function clearCart() {
+            const inputs = document.querySelectorAll('#cart input[type=number]');
+            inputs.forEach(input => {
+                input.value = 0;
+            });
+            document.getElementById('total').textContent = '0';
+            }
+    </script>
+    <style>
+        .form-row {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .form-row label {
+            min-width: 170px; 
+        }
+        .cartCon {
+        border: 5px solid #3f475a; 
+        padding: 10px; 
+        margin: auto; 
+        max-width: 340px;
+        border-radius: 3px;
+        }
+
+
+        
+
+    </style>
+</head>
+<body>
+    <header>
+        НГТУ ФБ Лабараторная работа 5
+    </header>
+
+    <main>
+        <div class="cartCon">
+            <h1>Корзина товаров</h1>
+            <form id="cart">
+            <div class="form-row">
+                <label for="apples">Яблоки (100р/шт):</label>
+                <input type="number" id="apples" name="apples" value="0" min="0">
+            </div>
+
+            <div class="form-row">
+                <label for="pears">Груши (80р/шт):</label>
+                <input type="number" id="pears" name="pears" value="0" min="0">
+            </div>
+
+            <div class="form-row">
+                <label for="oranges">Апельсины (150р/шт):</label>
+                <input type="number" id="oranges" name="oranges" value="0" min="0">
+            </div>
+
+            <div class="form-row">
+                <label for="bananas">Бананы (50р/шт):</label>
+                <input type="number" id="bananas" name="bananas" value="0" min="0">
+            </div>
+
+            <div class="form-row">
+                <label for="peaches">Персики (200р/шт):</label>
+                <input type="number" id="peaches" name="peaches" value="0" min="0">
+            </div>
+
+            <button type="button" onclick="calculateTotal()">Рассчитать</button>
+            <button type="button" onclick="clearCart()">Очистить</button>
+            </form>
+
+            <p>Общая сумма: <span id="total">0</span> рублей</p>
+        </div>
+    </main>
+    
+    <footer>
+        &copy; Никитенко Илья Романович
+    </footer>
+</body>
+</html>
