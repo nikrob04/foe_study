@@ -1,0 +1,75 @@
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Никитенко Илья Романович. Лабораторная 6</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon-16x16.png">
+    <link rel="icon" href="../favicon-32x32.png">
+    <style>
+        .color {
+            height: 200px;
+            width: 300px;
+            border: 4px solid black;
+            border-radius: 3px;
+            color: red;
+            background-color: darkblue;
+            text-align: center;
+            font-family: 'Times New Roman', Times, serif;
+            cursor: pointer
+        }
+    </style>
+    <script>
+        function changeColor(div) {
+            if (div.style.backgroundColor === 'darkblue') { 
+                div.style.backgroundColor = 'black'; 
+                div.style.fontFamily = 'Arial';
+                document.getElementById('color-name').innerHTML = 'чёрный';
+            } 
+            else if (div.style.backgroundColor === 'black') {
+                div.style.backgroundColor = 'yellow'; 
+                div.style.fontFamily = 'Impact';
+                document.getElementById('color-name').innerHTML = 'желтый';
+            } 
+            
+            else if (div.style.backgroundColor === 'yellow') {
+                div.style.backgroundColor = 'green';
+                div.style.fontFamily = 'Verdana';
+                document.getElementById('color-name').innerHTML = 'зелёный';
+            } 
+            else if (div.style.backgroundColor === 'green') {
+                div.style.backgroundColor = 'white';
+                div.style.fontFamily = 'Garamond';
+                document.getElementById('color-name').innerHTML = 'белый';
+            } 
+            else if (div.style.backgroundColor === 'white') {
+                div.style.backgroundColor = 'darkred';
+                div.style.fontFamily = 'Georgia';
+                document.getElementById('color-name').innerHTML = 'тёмно-красный';
+            } 
+            else {
+                div.style.backgroundColor = 'darkblue';
+                div.style.fontFamily = 'Times New Roman';
+                document.getElementById('color-name').innerHTML = 'синий';
+            }
+        }
+    </script>
+</head>
+<body>
+    <header>
+        НГТУ ФБ Лабораторная работа 6
+    </header>
+
+    <main>
+        <div class="color" ondblclick="changeColor(this)">
+            Текст: <span id="color-name">синий</span> <br>
+            Сделайте двойной щелчок, чтобы сменить цвет.
+        </div>
+    </main>
+
+    <footer>
+        &copy; Никитенко Илья Романович
+    </footer>
+</body>
+</html>
