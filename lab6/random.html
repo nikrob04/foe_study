@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Никитенко Илья Романович. Лабораторная 6</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon-16x16.png">
+    <link rel="icon" href="../favicon-32x32.png">
+    <style>
+        .game {
+            border: 3px solid;
+            border-radius: 5px;
+            margin: 10px auto;
+            text-align: center;
+            max-width: 700px;
+            padding-top: 5px;
+        }
+    </style>
+    <script>
+        let number;
+        let count = 0;
+
+        
+        function startGame() {
+            number = Math.floor(Math.random() * 100) + 1;
+            let screens = document.getElementsByClassName('game');
+            screens[0].style.display = 'none';
+            screens[1].style.display = 'block';
+        }
+
+        // Функция проверки числа
+        function guess() {
+            let input = document.getElementById('user-number');
+            let userNumber = input.value
+            let parsedNumber = parseInt(userNumber, 10);
+            let message = document.getElementById('result');
+
+            
+            if (userNumber === '' || isNaN(parsedNumber)) {
+                message.innerHTML = 'Введите корректное число!';
+                return;  
+            }
+
+            
+            if (parsedNumber < 1 || parsedNumber > 100) {
+                message.innerHTML = 'Введите число от 1 до 100!';
+                return; 
+            }
+
+            count++;  
+
+            
+            if (parsedNumber > number) {
+                message.innerHTML = 'Вы ввели слишком большое число';
+            } else if (parsedNumber < number) {
+                message.innerHTML = 'Вы ввели слишком маленькое число';
+            } else {
+                let screens = document.getElementsByClassName('game');
+                screens[1].style.display = 'none';
+                screens[2].style.display = 'block';
+                document.getElementById('number').innerHTML = number;
+                document.getElementById('try-count').innerHTML = count;
+            }
+        }
+
+        
+        function again() {
+            let screens = document.getElementsByClassName('game');
+            screens[2].style.display = 'none';
+            startGame();
+            count = 0;
+            document.getElementById('result').innerHTML = '';
+            document.getElementById('user-number').value = '';
+        }
+    </script>
+</head>
+<body>
+    <header>
+        НГТУ ФБ Лабораторная работа 6
+    </header>
+
+    <main>
+        <div class="game">
+            <button onclick="startGame()">Сыграть в игру</button>
+        </div>
+        <div class="game" style="display: none;">
+            <h1>Угадай число!</h1>
+            <div>
+                Задумано число от 1 до 100. Угадай какое? <br>
+                <input type="number" value="" min="1" max="100" id="user-number"><br>
+                <button onclick="guess()">Угадать</button>
+                <div id="result"></div>
+            </div>
+        </div>
+        <div class="game" style="display: none;">
+            <h1>Поздравляем, вы выиграли!</h1>
+            <div>Задуманное число: <span id="number"></span></div>
+            <div>Количество попыток: <span id="try-count"></span></div>
+            <div><button onclick="again()">Сыграть еще раз</button></div>
+        </div>
+    </main>
+
+    <footer>
+        &copy; Никитенко Илья Романович
+    </footer>
+</body>
+</html>
