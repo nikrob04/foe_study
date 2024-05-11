@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Никитенко Илья Романович. Лабораторная 6</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon-16x16.png">
+    <link rel="icon" href="../favicon-32x32.png">
+    <script>
+        function money() {
+            let items = [
+                { id: 'milk', price: 89 },
+                { id: 'smet', price: 59 },
+                { id: 'yogurt', price: 70 },
+                { id: 'dumplings', price: 250 },
+                { id: 'juice', price: 100 },
+                { id: 'tea', price: 100 },
+                { id: 'coffee', price: 400 },
+                { id: 'soysauce', price: 150 }
+            ];
+            let total = 0;
+            let hasItem = false;
+
+            for (let item of items) {
+                let count = document.getElementById(item.id + '-count').value;
+                if (count === '') {
+                    continue;
+                }
+
+                count = parseInt(count, 10);
+                if (isNaN(count) || count < 0) {
+                    document.getElementById('result').innerText = 'Ошибка: Введите корректное количество для ' + item.id;
+                    return;
+                }
+
+                if (count > 0) {
+                    hasItem = true;
+                    total += item.price * count;
+                }
+            }
+
+            if (!hasItem) {
+                document.getElementById('result').innerText = 'Ошибка: Выберите хотя бы один товар';
+                return;
+            }
+
+            let cash = parseInt(document.getElementById('cash').value, 10);
+            if (isNaN(cash)) {
+                document.getElementById('result').innerText = 'Ошибка: Введите ваш баланс';
+                return;
+            }
+
+            let remaining = cash - total;
+            if (total > cash) {
+                document.getElementById('result').innerText = 'Ошибка: Недостаточно средств. Необходимая сумма: ' + total + ', остаток: ' + remaining;
+            } else {
+                document.getElementById('result').innerText = 'Покупка успешно оформлена на сумму: ' + total + ', остаток: ' + remaining;
+            }
+        }
+    </script>
+</head>
+<body>
+    <header>
+        НГТУ ФБ Лабораторная работа 6
+    </header>
+
+    <main>
+        <div>
+            Мой баланс <input id="cash" type="number">
+        </div>
+        <div>
+            <table border="1px">
+                <tr>
+                    <td> </td>
+                    <td>Название</td>
+                    <td>Цена</td>
+                    <td>Кол-во</td>
+                </tr>
+                <!-- Список товаров -->
+                <tr><td>1</td><td>Молоко</td><td>89</td><td><input type="number" id="milk-count"></td></tr>
+                <tr><td>2</td><td>Сметана</td><td>59</td><td><input type="number" id="smet-count"></td></tr>
+                <tr><td>3</td><td>Йогурт</td><td>70</td><td><input type="number" id="yogurt-count"></td></tr>
+                <tr><td>4</td><td>Пельмени</td><td>250</td><td><input type="number" id="dumplings-count"></td></tr>
+                <tr><td>5</td><td>Сок</td><td>100</td><td><input type="number" id="juice-count"></td></tr>
+                <tr><td>6</td><td>Чай</td><td>100</td><td><input type="number" id="tea-count"></td></tr>
+                <tr><td>7</td><td>Кофе</td><td>400</td><td><input type="number" id="coffee-count"></td></tr>
+                <tr><td>8</td><td>Соевый соус</td><td>150</td><td><input type="number" id="soysauce-count"></td></tr>
+                <tr><td colspan="4"><button onclick="money()">ОК</button></td></tr>
+            </table>
+        </div>
+        <div id="result" style="margin-top: 10px;">Результаты покупки будут отображаться здесь</div>
+    </main>
+
+    <footer>
+        &copy; Никитенко Илья Романович
+    </footer>
+</body>
+</html> 
