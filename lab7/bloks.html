@@ -17,29 +17,29 @@
             document.querySelector('main').appendChild(newBlock);
         }
         function addNewBlocks() {
-            let main = document.querySelector('main')
-            let count = document.getElementById('numb').value
-            for (let i = 0; i<count; i++) {
+            let main = document.querySelector('main');
+            let count = document.getElementById('numb').value;
+            for (let i = 0; i < count; i++) {
                 let newBlock = document.createElement('div');
                 newBlock.style.backgroundColor = 'blue';
-                newBlock.style.width = (i+100)*5+'px'
+                newBlock.style.width = (i + 100) * 5 + 'px';
                 newBlock.style.height = '40px';
                 newBlock.style.margin = '5px';
-                newBlock.style.color = 'white'
-                newBlock.innerHTML = `Блок № ${i+1}: 2*${i}<sup>2</sup> = ${2*i**2}`;
+                newBlock.style.color = 'white';
+                newBlock.innerHTML = `Блок № ${i + 1}: 2*${i}<sup>2</sup> = ${2 * i ** 2}`;
                 main.appendChild(newBlock);
             }
         }
         function add20_50() {
-            let main = document.querySelector('main')
-            for (let i = 20; i<=50; i+=2.5) {
+            let main = document.querySelector('main');
+            for (let i = 20; i <= 50; i += 2.5) {
                 let newBlock = document.createElement('div');
                 newBlock.style.backgroundColor = 'red';
-                newBlock.style.width = (i+100)*6+'px'
+                newBlock.style.width = (i + 100) * 6 + 'px';
                 newBlock.style.height = '45px';
                 newBlock.style.margin = '6px';
-                newBlock.style.color = 'black'
-                newBlock.innerHTML = `Блок № ${i+1}: 2*${i}<sup>2</sup> = ${2*i**2}`;
+                newBlock.style.color = 'black';
+                newBlock.innerHTML = `Блок № ${i + 1}: 2*${i}<sup>2</sup> = ${2 * i ** 2}`;
                 main.appendChild(newBlock);
             }
         }
@@ -54,9 +54,23 @@
                 newBlock.style.borderRadius = '50%';
                 newBlock.style.display = 'inline-block';
                 newBlock.style.textAlign = 'center';
-                newBlock.style.lineHeight = '20px';
+                newBlock.style.lineHeight = '30px';
                 newBlock.style.color = 'white';
                 newBlock.innerHTML = i;
+                main.appendChild(newBlock);
+            }
+        }
+        function opaciti0_100() {
+            let main = document.querySelector('main');
+            for (let i = 0; i <= 9; i++) {
+                let newBlock = document.createElement('div');
+                newBlock.style.backgroundColor = 'black';
+                newBlock.style.width = '1000px';
+                newBlock.style.height = '45px';
+                newBlock.style.margin = '6px';
+                newBlock.style.color = 'white';
+                newBlock.style.opacity = i / 10;
+                newBlock.innerHTML = `Блок № ${i + 1}`;
                 main.appendChild(newBlock);
             }
         }
@@ -73,6 +87,7 @@
         <button onclick="addNewBlocks()">Добавление блоков</button>
         <button onclick="add20_50()">20 to 50</button>
         <button onclick="add10_80()">10 => -80</button>
+        <button onclick="opaciti0_100()">Opasity</button>
     </main>
 
     <footer>
