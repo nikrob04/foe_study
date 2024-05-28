@@ -30,8 +30,36 @@
                 main.appendChild(newBlock);
             }
         }
-
-
+        function add20_50() {
+            let main = document.querySelector('main')
+            for (let i = 20; i<=50; i+=2.5) {
+                let newBlock = document.createElement('div');
+                newBlock.style.backgroundColor = 'red';
+                newBlock.style.width = (i+100)*6+'px'
+                newBlock.style.height = '45px';
+                newBlock.style.margin = '6px';
+                newBlock.style.color = 'black'
+                newBlock.innerHTML = `Блок № ${i+1}: 2*${i}<sup>2</sup> = ${2*i**2}`;
+                main.appendChild(newBlock);
+            }
+        }
+        function add10_80() {
+            let main = document.querySelector('main');
+            for (let i = 10; i >= -80; i -= 3) {
+                let newBlock = document.createElement('div');
+                newBlock.style.backgroundColor = 'green';
+                newBlock.style.width = '30px';
+                newBlock.style.height = '30px';
+                newBlock.style.margin = '5px';
+                newBlock.style.borderRadius = '50%';
+                newBlock.style.display = 'inline-block';
+                newBlock.style.textAlign = 'center';
+                newBlock.style.lineHeight = '20px';
+                newBlock.style.color = 'white';
+                newBlock.innerHTML = i;
+                main.appendChild(newBlock);
+            }
+        }
     </script>
 </head>
 <body>
@@ -40,10 +68,11 @@
     </header>
 
     <main>
-
         <button onclick="addNewBlock()">Добавить блок</button>
         <input type="number" id='numb'>
         <button onclick="addNewBlocks()">Добавление блоков</button>
+        <button onclick="add20_50()">20 to 50</button>
+        <button onclick="add10_80()">10 => -80</button>
     </main>
 
     <footer>
