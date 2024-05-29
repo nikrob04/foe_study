@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Никитенко Илья Романович. Лабараторная 7</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon-16x16.png">
+    <link rel="icon" href="../favicon-32x32.png">
+    <script>
+        function showStockData() {
+            const dates = [
+                "28.05.2024", "27.05.2024", "24.05.2024", "23.05.2024", "22.05.2024",
+                "21.05.2024", "20.05.2024", "17.05.2024", "16.05.2024", "15.05.2024"
+            ];
+            const prices = [
+                1664.00, 1649.49, 1674.74, 1700.00, 1688.00,
+                1703.50, 1673.69, 1679.76, 1682.00, 1659.59
+            ];
+
+            let table = document.createElement('table');
+            table.border = 1;
+            let headerRow = document.createElement('tr');
+            let headers = ['Дата', 'Цена акций', 'Разница'];
+            headers.forEach(headerText => {
+                let th = document.createElement('th');
+                th.innerText = headerText;
+                headerRow.appendChild(th);
+            });
+            table.appendChild(headerRow);
+
+            let sum = 0;
+            let maxPrice = prices[0];
+            let minPrice = prices[0];
+
+            for(let i = 0; i < prices.length; i++) {
+                let tr = document.createElement('tr');
+
+                let tdDate = document.createElement('td');
+                tdDate.innerText = dates[i];
+                tr.appendChild(tdDate);
+
+                let tdPrice = document.createElement('td');
+                tdPrice.innerText = prices[i];
+                tr.appendChild(tdPrice);
+
+                let tdDifference = document.createElement('td');
+                if (i === 0) {
+                    tdDifference.innerText = '-';
+                } else {
+                    tdDifference.innerText = (prices[i] - prices[i - 1]).toFixed(2);
+                }
+                tr.appendChild(tdDifference);
+
+                table.appendChild(tr);
+
+                sum += prices[i];
+                if (prices[i] > maxPrice) {
+                    maxPrice = prices[i];
+                }
+                if (prices[i] < minPrice) {
+                    minPrice = prices[i];
+                }
+            }
+
+            let average = (sum / prices.length).toFixed(2);
+
+            document.body.appendChild(table);
+
+            let summary = document.createElement('div');
+            summary.innerHTML = `
+                <p>Среднее значение стоимости акции: ${average}</p>
+                <p>Максимальное значение стоимости акции: ${maxPrice}</p>
+                <p>Минимальное значение стоимости акции: ${minPrice}</p>
+            `;
+            document.body.appendChild(summary);
+        }
+    </script>
+</head>
+<body>
+    <header>
+        НГТУ ФБ Лабараторная работа 7
+    </header>
+
+    <main>
+        <button onclick="showStockData()">Курс акций Транснефть</button>
+    </main>
+
+    <footer>
+        &copy; Никитенко Илья Романович
+    </footer>
+</body>
+</html>
