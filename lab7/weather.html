@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Никитенко Илья Романович. Лабараторная 7</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon-16x16.png">
+    <link rel="icon" href="../favicon-32x32.png">
+    <style>
+        .weather-report {
+            border: 2px solid #333;
+            padding: 10px;
+            margin: 10px 0;
+            font-family: Arial, sans-serif;
+        }
+        .weather-report p {
+            margin: 5px 0;
+        }
+        .weather-report strong {
+            display: block;
+            margin-bottom: 5px;
+        }
+    </style>
+    <script>
+        function getWeatherForecast() {
+            const url = 'https://api.open-meteo.com/v1/forecast?latitude=55.0415&longitude=82.9346&hourly=temperature_2m&timezone=Asia%2FBangkok';
+            fetch(url)
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (json) {
+                const weatherContainer = document.getElementById('weather-forecast');
+                weatherContainer.innerHTML = '';
+
+                const times = json.hourly.time;
+                const temperatures = json.hourly.temperature_2m;
+
+                for (let i = 0; i < times.length; i += 24) {
+                    const date = new Date(times[i]).toLocaleDateString('ru-RU');
+                    const dailyTemperatures = temperatures.slice(i, i + 24);
+                    const averageTemperature = (dailyTemperatures.reduce((sum, temp) => sum + temp, 0) / dailyTemperatures.length).toFixed(2);
+
+                    const weatherReport = document.createElement('div');
+                    weatherReport.className = 'weather-report';
+                    weatherReport.innerHTML = `
+                        <strong>Дата: ${date}</strong>
+                        <p>Средняя температура: ${averageTemperature}°C</p>
+                    `;
+                    weatherContainer.appendChild(weatherReport);
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <header>
+        НГТУ ФБ Лабараторная работа 7
+    </header>
+
+    <main>
+        <button onclick="getWeatherForecast()">Получить прогноз погоды на 7 дней</button>
+        <div id="weather-forecast"></div>
+    </main>
+
+    <footer>
+        &copy; Никитенко Илья Романович
+    </footer>
+</body>
+</html>
