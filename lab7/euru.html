@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Никитенко Илья Романович. Лабараторная 7</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon-16x16.png">
+    <style>
+        .exchange-rate {
+            border: 2px solid #333;
+            padding: 10px;
+            margin: 10px 0;
+            font-family: Arial, sans-serif;
+        }
+        .exchange-rate p {
+            margin: 5px 0;
+        }
+        .increase {
+            color: green;
+        }
+        .decrease {
+            color: red;
+        }
+    </style>
+    <script>
+        function getEuroExchangeRate() {
+            const url = 'https://www.cbr-xml-daily.ru/daily_json.js';
+            fetch(url)
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (json) {
+                const date = new Date(json.Date).toLocaleDateString('ru-RU');
+                const currentRate = json.Valute.EUR.Value;
+                const previousRate = json.Valute.EUR.Previous;
+                const difference = (currentRate - previousRate).toFixed(4);
+                const trend = currentRate > previousRate ? 'increase' : 'decrease';
+                const trendText = currentRate > previousRate ? 'поднялся' : 'опустился';
+                
+                document.getElementById('exchange-rate').innerHTML = `
+                    <div class="exchange-rate">
+                        <p><strong>Курс Евро на дату:</strong> ${date}</p>
+                        <p><strong>Текущий курс:</strong> ${currentRate} руб.</p>
+                        <p><strong>Курс за предыдущую дату:</strong> ${previousRate} руб.</p>
+                        <p class="${trend}"><strong>Разница:</strong> ${difference} руб. (${trendText} курс)</p>
+                    </div>
+                `;
+            });
+        }
+    </script>
+</head>
+<body>
+    <header>
+        НГТУ ФБ Лабараторная работа 7
+    </header>
+
+    <main>
+        <button onclick="getEuroExchangeRate()">Получить курс обмена Евро</button>
+        <div id="exchange-rate"></div>
+    </main>
+
+    <footer>
+        &copy; Никитенко Илья Романович
+        <br>
+        <a href="https://www.cbr-xml-daily.ru/">Источник данных: ЦБ РФ</a>
+    </footer>
+</body>
+</html>
+    
