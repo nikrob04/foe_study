@@ -9,6 +9,28 @@
     <link rel="icon" href="../favicon-16x16.png">
     <link rel="icon" href="../favicon-32x32.png">
     <script src="time.js"></script>
+    <style>
+        .clock-container {
+            position: relative;
+            width: 500px;
+            margin: 0 auto;
+        }
+        .clock-face {
+            width: 100%;
+        }
+        .arrow {
+            position: absolute;
+
+            width: 5px;
+            height: 170px;
+            background-color: black; /* цвет фона стрелки */
+            top: 18.5%; /* Центрирование по вертикали */
+            left: 50%; /* Центрирование по горизонтали */
+            transform-origin: bottom center;
+            transform: translate(-50%, -100%); /* Смещение для точного центрирования */
+
+        }
+    </style>
 </head>
 <body onload="showTime(), showSec()">
     <header style="display: flex;">
@@ -16,8 +38,12 @@
         <div id="time" style="position: absolute; right: 10px;">00:00:00</div>
     </header>
 
-    <main> 
+    <main>
         <div id="timeSec" style="text-align: center; font-size: 60px;"></div>
+        <div class="clock-container">
+            <img src="clock.jpg" class="clock-face">
+            <div id="arrow" class="arrow"></div>
+        </div>
     </main>
 
     <footer>
